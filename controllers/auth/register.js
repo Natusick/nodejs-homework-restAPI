@@ -6,8 +6,8 @@ const register = async(req, res)=> {
     const {name, email, password} = req.body;
     const user = await User.findOne({email});
     if(user) {
-        return res.status(201).json({
-            message: "Not found",
+        return res.status(409).json({
+            message: "Email in use",
           });
     }
     const hashPassword = await bcrypt.hash(password, 10)
