@@ -17,7 +17,7 @@ const authenticate = async (req, res, next) => {
     const user = await User.findById(id);
     if (!user || !user.token || user.token !== token) {
       return res.status(401).json({
-        message: "Not authorized",
+        message:"Unauthorized",
       });
     }
     req.user = user;
@@ -25,7 +25,7 @@ const authenticate = async (req, res, next) => {
   } catch (error) {
     if (!error.status) {
       error.status = 401;
-      error.message = "Unauthorized";
+      error.message = "Not authorized";
     }
     next(error);
   }
