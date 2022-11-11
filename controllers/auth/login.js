@@ -8,7 +8,7 @@ const { SECRET_KEY } = process.env;
 const login = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
-  if (!user) {
+  if (!user || !user.verify) {
     return res.status(401).json({
       message: "Email or password wrong",
     });
