@@ -1,5 +1,5 @@
 const bcrypt = require("bcryptjs");
-const {nanoid} = require("nanoid");
+const nanoid = require("nanoid");
 const gravatar = require("gravatar");
 
 const { User } = require("../../models/user");
